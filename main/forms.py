@@ -18,7 +18,7 @@ class RegisterUserForm(forms.ModelForm):
                              label='Адрес электронной почты')
     password1 = forms.CharField(label='Пароль',
                                 widget=forms.PasswordInput,
-                                help_text=password_validation.password_validators_help_text_html)
+                                help_text=password_validation.password_validators_help_text_html())
     password2 = forms.CharField(label='Пароль (повторно)',
                                 widget=forms.PasswordInput,
                                 help_text='Введите тот же самый пароль еще раз для проверки')
