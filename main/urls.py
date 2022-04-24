@@ -1,16 +1,20 @@
 from django.urls import path
-
+from django.contrib.auth.views import PasswordResetDoneView
 from .views import index, other_page
 from .views import BBLoginView, BBLogoutView, profile
-from .views import ChangeUserInfoView, BBPasswordChangeView
+from .views import ChangeUserInfoView, BBPasswordChangeView, BBPasswordResetView
 from .views import RegisterUserView, RegisterDoneView
 from .views import user_activate, DeleteUserView
 
 app_name = 'main'
 urlpatterns = [
     path('accounts/logout/', BBLogoutView.as_view(), name='logout'),
-    path('accounts/password/change', BBPasswordChangeView.as_view(), name='password_change'),
-    path('accounts/profile/delete', DeleteUserView.as_view(), name='profile_delete'),
+    path('acoounts/password_reset/done/', PasswordResetDoneView.as_view(
+        template_name='registration/'),
+         name='password_reset_done'),
+    path('accounts/password_reset/', BBPasswordResetView.as_view(), name='password_reset'),
+    path('accounts/password/change/', BBPasswordChangeView.as_view(), name='password_change'),
+    path('accounts/profile/delete/', DeleteUserView.as_view(), name='profile_delete'),
     path('accounts/profile/change/', ChangeUserInfoView.as_view(), name='profile_change'),
     path('accounts/profile/', profile, name='profile'),
     path('accounts/register/activate/<str:sign>/', user_activate,
