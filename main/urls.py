@@ -10,7 +10,7 @@ app_name = 'main'
 urlpatterns = [
     path('accounts/logout/', BBLogoutView.as_view(), name='logout'),
     path('acсounts/password_reset/done/', PasswordResetDoneView.as_view(
-        template_name='email/password_reset_email_sent.html'),
+        template_name='main/password_reset_email_sent.html'),
          name='password_reset_done'),
     path('accounts/password_reset/', BBPasswordResetView.as_view(), name='password_reset'),
     path('accounts/password/change/', BBPasswordChangeView.as_view(), name='password_change'),

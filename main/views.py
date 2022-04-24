@@ -108,7 +108,7 @@ class DeleteUserView(LoginRequiredMixin, DeleteView):
         return get_object_or_404(queryset, pk=self.user_id)
 
 class BBPasswordResetView(PasswordResetView):
-    template_name = 'registration/password_reset_form.html'
+    template_name = 'main/password_reset.html'
     subject_template_name = 'email/password_reset_subject.txt'
     email_template_name = 'email/password_reset_body.txt'
     success_url = reverse_lazy('main:password_reset_done')
