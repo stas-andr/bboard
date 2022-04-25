@@ -2,7 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse, Http404
 from django.template import TemplateDoesNotExist
 from django.template.loader import get_template
-from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView, PasswordResetView
+from django.contrib.auth.views import LoginView, LogoutView,\
+    PasswordChangeView, PasswordResetView, PasswordResetConfirmView
 from django.contrib.auth.decorators import login_required
 from django.views.generic.edit import UpdateView
 from django.contrib.messages.views import SuccessMessageMixin
@@ -112,5 +113,9 @@ class BBPasswordResetView(PasswordResetView):
     subject_template_name = 'email/password_reset_subject.txt'
     email_template_name = 'email/password_reset_body.txt'
     success_url = reverse_lazy('main:password_reset_done')
+
+class BBPassrordResetConfirmView(PasswordResetConfirmView):
+    template_name = 'main/password_reset_confirm.html'
+    success_url = reverse_lazy('main:profile')
 
 

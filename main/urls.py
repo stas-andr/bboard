@@ -2,7 +2,7 @@ from django.urls import path
 from django.contrib.auth.views import PasswordResetDoneView
 from .views import index, other_page
 from .views import BBLoginView, BBLogoutView, profile
-from .views import ChangeUserInfoView, BBPasswordChangeView, BBPasswordResetView
+from .views import ChangeUserInfoView, BBPasswordChangeView, BBPasswordResetView, BBPassrordResetConfirmView
 from .views import RegisterUserView, RegisterDoneView
 from .views import user_activate, DeleteUserView
 
@@ -12,6 +12,7 @@ urlpatterns = [
     path('acсounts/password_reset/done/', PasswordResetDoneView.as_view(
         template_name='main/password_reset_email_sent.html'),
          name='password_reset_done'),
+    path('accounts/password_confirm/<uidb64>/<token>/', BBPassrordResetConfirmView.as_view(), name='password_reset_confirm'),
     path('accounts/password_reset/', BBPasswordResetView.as_view(), name='password_reset'),
     path('accounts/password/change/', BBPasswordChangeView.as_view(), name='password_change'),
     path('accounts/profile/delete/', DeleteUserView.as_view(), name='profile_delete'),
