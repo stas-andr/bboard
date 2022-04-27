@@ -118,4 +118,7 @@ class BBPassrordResetConfirmView(PasswordResetConfirmView):
     template_name = 'main/password_reset_confirm.html'
     success_url = reverse_lazy('main:profile')
 
+def by_rubric(request, pk):
+    pass
+
 

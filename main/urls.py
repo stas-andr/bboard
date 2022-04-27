@@ -5,6 +5,7 @@ from .views import BBLoginView, BBLogoutView, profile
 from .views import ChangeUserInfoView, BBPasswordChangeView, BBPasswordResetView, BBPassrordResetConfirmView
 from .views import RegisterUserView, RegisterDoneView
 from .views import user_activate, DeleteUserView
+from .views import by_rubric
 
 app_name = 'main'
 urlpatterns = [
@@ -25,6 +26,7 @@ urlpatterns = [
     path('accounts/register/', RegisterUserView.as_view(),
          name='register'),
     path('accounts/login/', BBLoginView.as_view(), name='login'),
+    path('<int:pk>', by_rubric, name='by_rubric'),
     path('<str:page>/', other_page, name='other'),
     path('', index, name='index')
 ]
