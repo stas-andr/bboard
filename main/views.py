@@ -24,7 +24,9 @@ from .forms import ChangeUserInfoForm, RegisterUserForm, SearchForm
 from .utilities import signer
 
 def index(request):
-    return render(request, 'main/index.html')
+    bbs = Bb.objects.filter(is_active=True)[:10]
+    context = {'bbs': bbs}
+    return render(request, 'main/index.html', context)
 
 def other_page(request, page):
     try:
@@ -138,5 +140,8 @@ def by_rubric(request, pk):
     context = {'rubric': rubric, 'page': page, 'bbs': page.object_list,
                'form': form}
     return render(request, 'main/by_rubric.html', context)
-
-
+def detail(request, rubric_pk, pk):
+    bb = get_object_or_404(Bb, pk=pk)
+    ais = bb.additionalimage_set.all()
+    context = {'bb': bb, 'ais': ais}
+    return render(request, 'main/detail.html', context)
